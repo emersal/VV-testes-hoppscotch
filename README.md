@@ -12,5 +12,5 @@ Repositório voltado para conter os arquivos com códigos, tanto de testes como 
 5. Abrir a aplicação em um navegador usando `http://localhost:3000` .
 
 **OBS:**
-- Aconselhável executar todos os comandos anteriores em um terminal externo ao VS Code, ou qualquer outro editor de texto/IDE.
+- Aconselhável executar todos os comandos anteriores em um terminal externo, **fora do VS Code**, ou qualquer outro editor de texto/IDE.
 - Modificar arquivo `.env.example` para `.env` e manter os valores no arquivo (pasta raíz *hoppscotch*).
