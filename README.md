@@ -3,6 +3,8 @@ Repositório voltado para conter os arquivos com códigos, tanto de testes como 
 
 # Montando setup local
 
+
+
 ### Local development environment
 
 1. Colnar repositório com git.
