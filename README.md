@@ -5,11 +5,11 @@ Repositório voltado para conter os arquivos com códigos, tanto de testes como 
 
 ### Local development environment
 
-1. Clone this repo with git.
-2. Install pnpm using npm by running npm install -g pnpm.
-3. Install dependencies by running pnpm install within the directory that you cloned (probably hoppscotch).
-4. Start the development server with pnpm run dev.
-5. Open the development site by going to http://localhost:3000 in your browser.
+1. Colnar repositório com git.
+2. Instalar `pnpm` usando `npm`, executando o comando `npm install -g pnpm`.
+3. Instalar as dependencias usando `pnpm install` dentro do diretório clonado (pasta raíz *hoppscotch*).
+4. Iniciar um servidor local com `pnpm run dev`.
+5. Abrir a aplicação em um navegador usando `http://localhost:3000` .
 
 **OBS:**
 - Modificar arquivo `.env.example` para `.env` e manter os valores no arquivo.
