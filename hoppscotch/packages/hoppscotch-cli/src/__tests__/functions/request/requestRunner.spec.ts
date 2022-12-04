@@ -7,7 +7,7 @@ import "@relmify/jest-fp-ts";
 
 jest.mock("axios");
 
-describe("requestRunner", () => {
+describe("Executando requisição", () => {
   let SAMPLE_REQUEST_CONFIG: RequestConfig = {
     url: "https://example.com",
     supported: false,
@@ -25,7 +25,7 @@ describe("requestRunner", () => {
     jest.clearAllMocks();
   });
 
-  it("Should handle axios-error with response info.", () => {
+  it("Lidar com arquivo não encontrado", () => {
     jest.spyOn(axios, "isAxiosError").mockReturnValue(true);
     (axios as unknown as jest.Mock).mockRejectedValueOnce(<AxiosError>{
       name: "name",
@@ -50,7 +50,7 @@ describe("requestRunner", () => {
     });
   });
 
-  it("Should handle axios-error for unsupported request.", () => {
+  it("Lidar com rquisição não suportada", () => {
     jest.spyOn(axios, "isAxiosError").mockReturnValue(true);
     (axios as unknown as jest.Mock).mockRejectedValueOnce(<AxiosError>{
       name: "name",
@@ -68,29 +68,7 @@ describe("requestRunner", () => {
     });
   });
 
-  it("Should handle axios-error with request info.", () => {
-    jest.spyOn(axios, "isAxiosError").mockReturnValue(true);
-    SAMPLE_REQUEST_CONFIG.supported = true;
-    (axios as unknown as jest.Mock).mockRejectedValueOnce(<AxiosError>{
-      name: "name",
-      message: "message",
-      config: SAMPLE_REQUEST_CONFIG,
-      isAxiosError: true,
-      request: {},
-      toJSON: () => Object({}),
-    });
-
-    return expect(requestRunner(SAMPLE_REQUEST_CONFIG)()).resolves.toBeLeft();
-  });
-
-  it("Should handle unknown error.", () => {
-    jest.spyOn(axios, "isAxiosError").mockReturnValue(false);
-    (axios as unknown as jest.Mock).mockRejectedValueOnce({});
-
-    return expect(requestRunner(SAMPLE_REQUEST_CONFIG)()).resolves.toBeLeft();
-  });
-
-  it("Should successfully execute.", () => {
+  it("Execução com sucesso", () => {
     SAMPLE_REQUEST_CONFIG.supported = true;
     (axios as unknown as jest.Mock).mockResolvedValue(<AxiosResponse>{
       data: "data",

@@ -39,7 +39,7 @@ const SAMPLE_RESOLVED_RESPONSE = <AxiosResponse>{
 
 const SAMPLE_ENVS = { global: [], selected: [] };
 
-describe("collectionsRunner", () => {
+describe("Testes de coleções ", () => {
   beforeEach(() => {
     jest.clearAllMocks();
   });
@@ -48,13 +48,13 @@ describe("collectionsRunner", () => {
     jest.clearAllMocks();
   });
 
-  test("Empty HoppCollection.", () => {
+  test("Coleção vazia", () => {
     return expect(
       collectionsRunner({ collections: [], envs: SAMPLE_ENVS })()
     ).resolves.toStrictEqual([]);
   });
 
-  test("Empty requests and folders in collection.", () => {
+  test("Coleção sem requisições", () => {
     return expect(
       collectionsRunner({
         collections: [
@@ -70,7 +70,7 @@ describe("collectionsRunner", () => {
     ).resolves.toMatchObject([]);
   });
 
-  test("Non-empty requests in collection.", () => {
+  test("Coleções com requisiçoes", () => {
     (axios as unknown as jest.Mock).mockResolvedValue(SAMPLE_RESOLVED_RESPONSE);
 
     return expect(
@@ -88,38 +88,6 @@ describe("collectionsRunner", () => {
     ).resolves.toMatchObject([
       {
         path: "collection/request",
-        tests: [],
-        errors: [],
-        result: true,
-      },
-    ]);
-  });
-
-  test("Non-empty folders in collection.", () => {
-    (axios as unknown as jest.Mock).mockResolvedValue(SAMPLE_RESOLVED_RESPONSE);
-
-    return expect(
-      collectionsRunner({
-        collections: [
-          {
-            v: 1,
-            name: "collection",
-            folders: [
-              {
-                v: 1,
-                name: "folder",
-                folders: [],
-                requests: [SAMPLE_HOPP_REQUEST],
-              },
-            ],
-            requests: [],
-          },
-        ],
-        envs: SAMPLE_ENVS,
-      })()
-    ).resolves.toMatchObject([
-      {
-        path: "collection/folder/request",
         tests: [],
         errors: [],
         result: true,

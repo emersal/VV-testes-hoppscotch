@@ -1,11 +1,11 @@
 import { isRESTCollection } from "../../../utils/checks";
 
-describe("isRESTCollection", () => {
-  test("Undefined collection value.", () => {
+describe("Verificar se é uma coleção REST", () => {
+  test("Sem valor definido na coleção", () => {
     expect(isRESTCollection(undefined)).toBeFalsy();
   });
 
-  test("Invalid id value.", () => {
+  test("ID não válido", () => {
     expect(
       isRESTCollection({
         v: 1,
@@ -15,7 +15,7 @@ describe("isRESTCollection", () => {
     ).toBeFalsy();
   });
 
-  test("Invalid requests value.", () => {
+  test("valor de requisição inválida", () => {
     expect(
       isRESTCollection({
         v: 1,
@@ -26,19 +26,7 @@ describe("isRESTCollection", () => {
     ).toBeFalsy();
   });
 
-  test("Invalid folders value.", () => {
-    expect(
-      isRESTCollection({
-        v: 1,
-        name: "test",
-        id: "1",
-        requests: [],
-        folders: undefined,
-      })
-    ).toBeFalsy();
-  });
-
-  test("Invalid RESTCollection(s) in folders.", () => {
+  test("Pasta REST não válida.", () => {
     expect(
       isRESTCollection({
         v: 1,
@@ -58,19 +46,8 @@ describe("isRESTCollection", () => {
     ).toBeFalsy();
   });
 
-  test("Invalid HoppRESTRequest(s) in requests.", () => {
-    expect(
-      isRESTCollection({
-        v: 1,
-        name: "test",
-        id: "1",
-        requests: [{}],
-        folders: [],
-      })
-    ).toBeFalsy();
-  });
 
-  test("Valid RESTCollection.", () => {
+  test("Coleção REST aceita", () => {
     expect(
       isRESTCollection({
         v: 1,
